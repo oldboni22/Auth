@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{0912E694-B866-4825-B9B4-6D818F4C481B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryAbstractions", "RepositoryAbstractions\RepositoryAbstractions.csproj", "{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7D07F595-772C-4243-8D75-2A1CFECDDE67} = {0912E694-B866-4825-B9B4-6D818F4C481B}
+		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6} = {0912E694-B866-4825-B9B4-6D818F4C481B}
 	EndGlobalSection
 EndGlobal

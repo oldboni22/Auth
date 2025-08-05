@@ -1,0 +1,33 @@
+using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
+
+namespace Repository;
+
+public abstract class RepositoryBase<T>(AppDbContext context) where T : class
+{
+    private readonly AppDbContext _context = context;
+
+    protected IQueryable<T> FindAll(bool trackChanges)
+    {
+        var entities = _context.Set<T>();
+
+        return trackChanges ? entities : entities.AsNoTracking();
+    }
+
+    protected IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges)
+    {
+        var entities = _context.Set<T>().Where(expression);
+        
+        return trackChanges ? entities : entities.AsNoTracking();
+    }
+    
+    protected void Delete(T entity)
+    {
+        _context.Set<T>().Remove(entity);
+    }
+
+    protected void Create(T entity)
+    {
+        _context.Set<T>().Add(entity);
+    }
+}
