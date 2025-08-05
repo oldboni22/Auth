@@ -7,7 +7,7 @@ namespace Repository;
 
 public class UserRepository(AppDbContext context) : RepositoryBase<User>(context), IUserRepository
 {
-    public async Task<User?> FindUserByName(string name, bool trackChanges) => await 
+    public async Task<User?> FindUserByNameAsync(string name, bool trackChanges) => await 
             FindByCondition(u => string.Equals(name, u.Name), trackChanges).
             FirstOrDefaultAsync();
     

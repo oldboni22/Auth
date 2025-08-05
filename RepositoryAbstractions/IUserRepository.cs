@@ -5,7 +5,7 @@ namespace RepositoryAbstractions;
 
 public interface IUserRepository
 {
-    Task<User?> FindUserByName(string name, bool trackChanges);
+    Task<User?> FindUserByNameAsync(string name, bool trackChanges);
     void CreateUser(User user);
     void DeleteUser(User user);
 }

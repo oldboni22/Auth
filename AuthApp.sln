@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryAbstractions", "RepositoryAbstractions\RepositoryAbstractions.csproj", "{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{F0646813-11E4-4F7F-87E8-F71FE4BB3A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{EB04469C-1F38-4E58-978D-B08D6CED6988}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Contracts", "Service.Contracts\Service.Contracts.csproj", "{822D30A8-84EF-4C3B-96B0-1D617232142F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,9 +44,19 @@ Global
 		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB04469C-1F38-4E58-978D-B08D6CED6988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB04469C-1F38-4E58-978D-B08D6CED6988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB04469C-1F38-4E58-978D-B08D6CED6988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB04469C-1F38-4E58-978D-B08D6CED6988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{822D30A8-84EF-4C3B-96B0-1D617232142F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{822D30A8-84EF-4C3B-96B0-1D617232142F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{822D30A8-84EF-4C3B-96B0-1D617232142F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{822D30A8-84EF-4C3B-96B0-1D617232142F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7D07F595-772C-4243-8D75-2A1CFECDDE67} = {0912E694-B866-4825-B9B4-6D818F4C481B}
 		{8E36B81E-6FAB-45BA-B252-3584CBEA71A6} = {0912E694-B866-4825-B9B4-6D818F4C481B}
+		{EB04469C-1F38-4E58-978D-B08D6CED6988} = {F0646813-11E4-4F7F-87E8-F71FE4BB3A0F}
+		{822D30A8-84EF-4C3B-96B0-1D617232142F} = {F0646813-11E4-4F7F-87E8-F71FE4BB3A0F}
 	EndGlobalSection
 EndGlobal

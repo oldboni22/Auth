@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain.Entities;
 
 [Table("users")]
-public class User
+public record User
 {
     [Column("user_id")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
