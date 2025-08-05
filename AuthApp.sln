@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApp", "AuthApp\AuthApp.csproj", "{BD49EECC-360D-49F2-A8F7-EB72C4E17DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{7D07F595-772C-4243-8D75-2A1CFECDDE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{0AFD7C1B-0C70-48CA-BD17-3817C5019AE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD49EECC-360D-49F2-A8F7-EB72C4E17DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD49EECC-360D-49F2-A8F7-EB72C4E17DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD49EECC-360D-49F2-A8F7-EB72C4E17DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD49EECC-360D-49F2-A8F7-EB72C4E17DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D07F595-772C-4243-8D75-2A1CFECDDE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D07F595-772C-4243-8D75-2A1CFECDDE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D07F595-772C-4243-8D75-2A1CFECDDE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D07F595-772C-4243-8D75-2A1CFECDDE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AFD7C1B-0C70-48CA-BD17-3817C5019AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AFD7C1B-0C70-48CA-BD17-3817C5019AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AFD7C1B-0C70-48CA-BD17-3817C5019AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AFD7C1B-0C70-48CA-BD17-3817C5019AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ECC76AF-6A2B-42BE-AC15-7A9070C54263}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
