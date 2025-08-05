@@ -1,4 +1,5 @@
 using AuthApp.ActionFilters;
+using AuthApp.Extensions;
 
 namespace AuthApp;
 
@@ -10,7 +11,19 @@ public class Program
         
         builder.Services.AddAuthorization();
 
-
+        builder.Services.AddAutoMapper
+        (
+            cfg => { },
+            typeof(Program)
+        );
+        
+        
+        builder.Services.AddAppDbContext(builder.Configuration);
+        builder.Services.AddRepository();
+        
+        builder.Services.AddRsa(builder.Configuration);
+        builder.Services.AddJwtManager(builder.Configuration);
+        builder.Services.AddService();
 
         builder.Services.AddControllers(options =>
         {
