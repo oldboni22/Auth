@@ -9,7 +9,7 @@ public class User
     [Column("user_id")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public required int Id { get; init; }
-
+    
     [MaxLength(20)]
     [Column("user_name")]
     public required string Name { get; init; }

@@ -17,5 +17,9 @@ public class AppDbContext(DbContextOptions options) : DbContext
         modelBuilder.Entity<User>().
             HasIndex(u => u.Id).
             IsClustered();
+        
+        modelBuilder.Entity<User>().
+            HasIndex(u => u.Name).
+            IsUnique();
     }
 }
