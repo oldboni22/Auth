@@ -46,6 +46,9 @@ public class UserService(IRepositoryManager repositoryManager, IMapper mapper, I
     
     public async Task CreateUserAsync(UserCreateDto dto)
     {
+        if (await FindUserByNameAsync(dto.Name) != null)
+            throw new UserAlreadyExistsException(dto.Name);
+        
         var user = _mapper.Map<User>(dto);
 
         var result = EncryptPassword(dto.Password);

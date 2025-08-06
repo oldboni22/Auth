@@ -20,6 +20,7 @@ public static class WebApplicationExtensions
                     context.Response.StatusCode = handlerFeature.Error switch
                     {
                         IncorrectUserLoginCredentialsException => StatusCodes.Status401Unauthorized,
+                        UserAlreadyExistsException => StatusCodes.Status409Conflict,
                         _ => StatusCodes.Status500InternalServerError
                     };
 
