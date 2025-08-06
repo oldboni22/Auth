@@ -1,6 +1,10 @@
+using AuthApp.ConfigureOptions;
 using Jwt;
 using Jwt.Abstractions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Repository;
 using RepositoryAbstractions;
 using RSA;
@@ -40,5 +44,14 @@ public static class ServiceCollectionExtensions
         collection.AddSingleton<IJwtParameters>(new JwtParameters(configuration));
 
         collection.AddSingleton<IJwtManager, JwtManager>();
+    }
+
+    public static void AddJwtBearer(this IServiceCollection collection, IConfiguration configuration)
+    {
+        collection.AddSingleton<IConfigureNamedOptions<JwtBearerOptions>, JwtBearerOptionsConfigurator>();
+        
+        collection.
+            AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
+            AddJwtBearer();
     }
 }

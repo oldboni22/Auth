@@ -8,8 +8,8 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        
-        builder.Services.AddAuthorization();
+
+        builder.Services.AddJwtBearer(builder.Configuration);
 
         builder.Services.AddAutoMapper
         (
@@ -31,12 +31,10 @@ public class Program
         });
         
         var app = builder.Build();
-
-       
-
+        
         app.UseHttpsRedirection();
 
-        app.UseAuthorization();
+        app.UseAuthentication();
 
         app.MapControllers();
         app.Run();
