@@ -9,6 +9,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        SetUserTriggers(modelBuilder);
         CreateUserIndex(modelBuilder);
     }
 

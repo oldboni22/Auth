@@ -25,8 +25,8 @@ public record User
     public string PasswordSalt { get; init; } = string.Empty;
     
     [Column("last_updated")] 
-    public DateTime LastUpdated { get; init; }
+    public DateTime? LastUpdated { get; init; } = null;
     
     [Column("created")]
-    public DateTime Created { get; init; }
+    public DateTime? Created { get; init; } = null;
 }
