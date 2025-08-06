@@ -21,7 +21,8 @@ namespace AuthApp.Migrations
                     user_name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     password_hash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     password_salt = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    last_updated = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    last_updated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    created = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
