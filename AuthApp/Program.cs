@@ -32,6 +32,8 @@ public class Program
         
         var app = builder.Build();
         
+        app.ConfigureExceptionHandling();
+        
         app.UseHttpsRedirection();
 
         app.UseAuthentication();
