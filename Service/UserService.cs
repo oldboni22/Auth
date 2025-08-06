@@ -2,16 +2,19 @@ using System.Security.Cryptography;
 using System.Text;
 using AutoMapper;
 using Domain.Entities;
+using Exceptions;
+using Jwt.Abstractions;
 using RepositoryAbstractions;
 using Service.Contracts;
 using Shared.Models;
 
 namespace Service;
 
-public class UserService(IRepositoryManager repositoryManager, IMapper mapper) : IUserService
+public class UserService(IRepositoryManager repositoryManager, IMapper mapper, IJwtManager jwtManager) : IUserService
 {
     private readonly IRepositoryManager _repositoryManager = repositoryManager;
     private readonly IMapper _mapper = mapper;
+    private readonly IJwtManager _jwtManager = jwtManager;
     
     private (string hash, string salt) EncryptPassword(string input)
     {
@@ -26,7 +29,7 @@ public class UserService(IRepositoryManager repositoryManager, IMapper mapper) :
         );
     }
 
-    private async Task<User?> FindUserByName(string name)
+    private async Task<User?> FindUserByNameAsync(string name)
     {
         var user = await _repositoryManager.User.FindUserByNameAsync(name,false);
 
@@ -55,6 +58,19 @@ public class UserService(IRepositoryManager repositoryManager, IMapper mapper) :
         _repositoryManager.User.CreateUser(user);
         
         await _repositoryManager.SaveChangesAsync();
+    }
+
+    public async Task<string?> LoginAsync(string name, string password)
+    {
+        var user = await FindUserByNameAsync(name);
+
+        if (user == null)
+            throw new IncorrectUserLoginCredentialsException(name, password);
+
+        if (IsUserPasswordCorrect(user, password) is false)
+            throw new IncorrectUserLoginCredentialsException(name, password);
+
+        return _jwtManager.CreateToken(user.Id);
     }
     
 }
