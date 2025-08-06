@@ -59,16 +59,17 @@ public class UserService(IRepositoryManager repositoryManager, IMapper mapper, I
         
         await _repositoryManager.SaveChangesAsync();
     }
+    
 
-    public async Task<string?> LoginAsync(string name, string password)
+    public async Task<string> LoginAsync(UserLoginDto dto)
     {
-        var user = await FindUserByNameAsync(name);
+        var user = await FindUserByNameAsync(dto.Name);
 
         if (user == null)
-            throw new IncorrectUserLoginCredentialsException(name, password);
+            throw new IncorrectUserLoginCredentialsException(dto);
 
-        if (IsUserPasswordCorrect(user, password) is false)
-            throw new IncorrectUserLoginCredentialsException(name, password);
+        if (IsUserPasswordCorrect(user, dto.Password) is false)
+            throw new IncorrectUserLoginCredentialsException(dto);
 
         return _jwtManager.CreateToken(user.Id);
     }

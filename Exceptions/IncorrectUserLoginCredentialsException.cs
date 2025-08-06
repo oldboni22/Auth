@@ -1,4 +1,6 @@
-﻿namespace Exceptions;
+﻿using Shared.Models;
 
-public class IncorrectUserLoginCredentialsException(string name, string password) :
-    Exception($"Wrong signing credentials : name - {name}, password - {password}") { }
+namespace Exceptions;
+
+public class IncorrectUserLoginCredentialsException(UserLoginDto dto) :
+    Exception($"Wrong signing credentials : name - {dto.Name}, password - {dto.Password}") { }

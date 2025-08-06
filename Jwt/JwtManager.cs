@@ -6,7 +6,7 @@ using RSA.Abstractions;
 
 namespace Jwt;
 
-public class JwtManager(ICertificate certificate, JwtParameters parameters) : IJwtManager
+public class JwtManager(ICertificate certificate, IJwtParameters parameters) : IJwtManager
 {
     private readonly ICertificate _certificate = certificate;
 

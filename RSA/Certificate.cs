@@ -16,8 +16,8 @@ public class Certificate : ICertificate
 
         if (File.Exists(privatePath) && File.Exists(publicPath))
         {
-            rsa.ImportFromPem(privatePath);
-            rsa.ImportFromPem(publicPath);
+            rsa.ImportFromPem(File.ReadAllText(privatePath));
+            rsa.ImportFromPem(File.ReadAllText(publicPath));
 
             Key = new RsaSecurityKey(rsa);
             return;
