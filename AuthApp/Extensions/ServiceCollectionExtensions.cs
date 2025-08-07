@@ -39,19 +39,23 @@ public static class ServiceCollectionExtensions
         collection.AddSingleton<ICertificate>(new Certificate(path!));
     }
 
-    public static void AddJwtManager(this IServiceCollection collection, IConfiguration configuration)
+    public static void AddJwtParameters(this IServiceCollection collection, IConfiguration configuration)
     {
         collection.AddSingleton<IJwtParameters>(new JwtParameters(configuration));
-
+    }
+    
+    public static void AddJwtManager(this IServiceCollection collection)
+    {
         collection.AddSingleton<IJwtManager, JwtManager>();
     }
 
-    public static void AddJwtBearer(this IServiceCollection collection, IConfiguration configuration)
+    public static void ConfigureAuthentication(this IServiceCollection collection)
     {
+        
         collection.AddSingleton<IConfigureNamedOptions<JwtBearerOptions>, JwtBearerOptionsConfigurator>();
         
         collection.
             AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
-            AddJwtBearer();
+            AddJwtBearer(JwtBearerDefaults.AuthenticationScheme);
     }
 }

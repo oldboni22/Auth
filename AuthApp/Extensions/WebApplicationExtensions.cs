@@ -21,6 +21,8 @@ public static class WebApplicationExtensions
                     {
                         IncorrectUserLoginCredentialsException => StatusCodes.Status401Unauthorized,
                         UserAlreadyExistsException => StatusCodes.Status409Conflict,
+                        UserIdDoesNotExist => StatusCodes.Status404NotFound,
+                        ArgumentException => StatusCodes.Status400BadRequest,
                         _ => StatusCodes.Status500InternalServerError
                     };
 

@@ -4,5 +4,6 @@ namespace RSA.Abstractions;
 
 public interface ICertificate
 {
-    RsaSecurityKey Key { get; }
+    RsaSecurityKey PrivateKey { get; }
+    RsaSecurityKey PublicKey { get; }
 }

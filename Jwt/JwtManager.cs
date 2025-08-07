@@ -20,7 +20,7 @@ public class JwtManager(ICertificate certificate, IJwtParameters parameters) : I
             new Claim("user_id", $"{userId}")
         };
 
-        var credentials = new SigningCredentials(_certificate.Key, SecurityAlgorithms.RsaSha256);
+        var credentials = new SigningCredentials(_certificate.PrivateKey, SecurityAlgorithms.RsaSha256);
         
         var tokenDescription = new JwtSecurityToken
         (

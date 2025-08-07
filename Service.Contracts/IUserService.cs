@@ -6,4 +6,5 @@ public interface IUserService
 {
     Task CreateUserAsync(UserCreateDto dto);
     Task<string> LoginAsync(UserLoginDto dto);
+    Task ChangeUserPasswordAsync(UserPasswordUpdateDto dto);
 }

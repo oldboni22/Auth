@@ -5,27 +5,38 @@ namespace RSA;
 
 public class Certificate : ICertificate
 {
-    public RsaSecurityKey Key { get; }
-    
+    public RsaSecurityKey PrivateKey { get; }
+    public RsaSecurityKey PublicKey { get; private set; }
+
     public Certificate(string path)
     {
-        var rsa = System.Security.Cryptography.RSA.Create();
+        var privateRsa = System.Security.Cryptography.RSA.Create();
         
         var privatePath = path + ".private.pem";
         var publicPath = path + ".public.pem";
 
-        if (File.Exists(privatePath) && File.Exists(publicPath))
+        if (File.Exists(privatePath))
         {
-            rsa.ImportFromPem(File.ReadAllText(privatePath));
-
-            Key = new RsaSecurityKey(rsa);
-            return;
+            privateRsa.ImportFromPem(File.ReadAllText(privatePath));
+        }
+        else
+        {
+            File.WriteAllText(privatePath,privateRsa.ExportRSAPrivateKeyPem());    
+            File.WriteAllText(publicPath,privateRsa.ExportRSAPublicKeyPem());    
         }
         
-        File.WriteAllText(publicPath,rsa.ExportRSAPublicKeyPem());
-        File.WriteAllText(privatePath,rsa.ExportRSAPrivateKeyPem());
+        InitializePublicKey(privateRsa);
+        PrivateKey = new RsaSecurityKey(privateRsa);
+        
+    }
 
-        Key = new RsaSecurityKey(rsa);
+    private void InitializePublicKey(System.Security.Cryptography.RSA privateRsa)
+    {
+        var publicKeyParameters = privateRsa.ExportParameters(false);
+        var publicRsa = System.Security.Cryptography.RSA.Create();
+        
+        publicRsa.ImportParameters(publicKeyParameters);
+        PublicKey = new RsaSecurityKey(publicRsa);
     }
     
 }

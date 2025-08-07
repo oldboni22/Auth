@@ -9,8 +9,6 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddJwtBearer(builder.Configuration);
-
         builder.Services.AddAutoMapper
         (
             cfg => { },
@@ -22,9 +20,13 @@ public class Program
         builder.Services.AddRepository();
         
         builder.Services.AddRsa(builder.Configuration);
-        builder.Services.AddJwtManager(builder.Configuration);
+        
+        builder.Services.AddJwtParameters(builder.Configuration);
+        builder.Services.AddJwtManager();
+        
         builder.Services.AddService();
 
+        builder.Services.ConfigureAuthentication();
         builder.Services.AddControllers(options =>
         {
             options.Filters.Add<ValidationFilter>();
@@ -37,7 +39,7 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseAuthentication();
-
+        
         app.MapControllers();
         app.Run();
     }

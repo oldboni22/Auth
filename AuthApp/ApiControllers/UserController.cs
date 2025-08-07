@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
@@ -25,6 +26,24 @@ public class UserController(IServiceManager serviceManager) : ControllerBase
         var token = await _serviceManager.User.LoginAsync(dto);
 
         return Ok(token);
+    }
+
+    [HttpPatch]
+    [Authorize]
+    public async Task<IActionResult> ChangeUserPasswordAsync([FromBody] string newPassword)
+    {
+        var userIdString = User.FindFirst("user_id")?.Value;
+        userIdString = userIdString ?? string.Empty;
+
+        var dto = new UserPasswordUpdateDto
+        {
+            UserIdAsString = userIdString,
+            NewPassword = newPassword
+        };
+        
+        await _serviceManager.User.ChangeUserPasswordAsync(dto);
+
+        return NoContent();
     }
     
 }

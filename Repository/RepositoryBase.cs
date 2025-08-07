@@ -30,4 +30,9 @@ public abstract class RepositoryBase<T>(AppDbContext context) where T : class
     {
         _context.Set<T>().Add(entity);
     }
+
+    protected void Update(T entity)
+    {
+        _context.Set<T>().Update(entity);
+    }
 }

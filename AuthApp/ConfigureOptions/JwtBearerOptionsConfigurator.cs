@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Jwt.Abstractions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -12,7 +13,6 @@ public class JwtBearerOptionsConfigurator(ICertificate certificate, IJwtParamete
     private readonly ICertificate _certificate = certificate;
     private readonly IJwtParameters _parameters = parameters;
 
-
     public void Configure(JwtBearerOptions options)
     {
         Configure(JwtBearerDefaults.AuthenticationScheme, options);
@@ -22,6 +22,7 @@ public class JwtBearerOptionsConfigurator(ICertificate certificate, IJwtParamete
     {
         if(name != JwtBearerDefaults.AuthenticationScheme)
             return;
+        
         
         options.TokenValidationParameters = new TokenValidationParameters 
         {
@@ -33,7 +34,7 @@ public class JwtBearerOptionsConfigurator(ICertificate certificate, IJwtParamete
             ValidAudience = _parameters.Audience,
 
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = _certificate.Key,
+            IssuerSigningKey = _certificate.PublicKey,
         };
         
     }

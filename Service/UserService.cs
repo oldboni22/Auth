@@ -51,11 +51,11 @@ public class UserService(IRepositoryManager repositoryManager, IMapper mapper, I
         
         var user = _mapper.Map<User>(dto);
 
-        var result = EncryptPassword(dto.Password);
+        var encryptionResult = EncryptPassword(dto.Password);
 
         user = user with
         {
-            PasswordHash = result.hash, PasswordSalt = result.salt
+            PasswordHash = encryptionResult.hash, PasswordSalt = encryptionResult.salt
         };
 
         _repositoryManager.User.CreateUser(user);
@@ -75,6 +75,28 @@ public class UserService(IRepositoryManager repositoryManager, IMapper mapper, I
             throw new IncorrectUserLoginCredentialsException(dto);
 
         return _jwtManager.CreateToken(user.Id);
+    }
+
+    public async Task ChangeUserPasswordAsync(UserPasswordUpdateDto dto)
+    {
+        if (Int32.TryParse(dto.UserIdAsString, out var id) is false)
+            throw new ArgumentException("Incorrect user id input.");
+        
+        var user = await _repositoryManager.User.FindUserByIdAsync(id,false);
+        
+        if(user == null)
+            throw new UserIdDoesNotExist(id);
+
+        var encryptionResult = EncryptPassword(dto.NewPassword);
+        
+        user = user with
+        {
+            PasswordHash = encryptionResult.hash,
+            PasswordSalt = encryptionResult.salt
+        };
+        
+        _repositoryManager.User.UpdateUser(user);
+        await _repositoryManager.SaveChangesAsync();
     }
     
 }
